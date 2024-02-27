@@ -1,0 +1,128 @@
+<section class="py-5" style="display: grid; gap: 40px">
+  <h1>Inscription</h1>
+  <form #f1="ngForm" style="display: grid; gap: 20px">
+    <div>
+      <label for="username" style="padding-right: 12px">Username</label>
+      <input
+        type="text"
+        name="username"
+        #username="ngModel"
+        ngModel
+        required
+        minlength="3"
+        maxlength="10"
+      />
+      <p *ngIf="username.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="username.errors['required']"
+          >This field is required</small
+        >
+        <small *ngIf="username.errors['minlength']"
+          >This field must be at least 3 characters</small
+        >
+        <small *ngIf="username.errors['maxlength']"
+          >This field must be at most 10 characters</small
+        >
+      </p>
+    </div>
+    <div>
+      <label for="password" style="padding-right: 12px">Password</label>
+      <input
+        type="password"
+        name="password"
+        #password="ngModel"
+        ngModel
+        required
+      />
+      <p *ngIf="password.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="password.errors['required']"
+          >This field is required</small
+        >
+      </p>
+    </div>
+    <div>
+      <label for="confirmation" style="padding-right: 12px">Confirmation</label>
+      <input
+        type="password"
+        name="confirmation"
+        #confirmation="ngModel"
+        ngModel
+        required
+      />
+      <p
+        *ngIf="confirmation.errors"
+        style="color: red; display: grid; gap: 6px"
+      >
+        <small *ngIf="confirmation.errors['required']"
+          >This field is required</small
+        >
+      </p>
+    </div>
+    <div>
+      <label for="country" style="padding-right: 12px">Country</label>
+      <select
+        type="password"
+        name="country"
+        #country="ngModel"
+        ngModel
+        required
+      >
+        <option value="algeria">algeria</option>
+        <option value="france">france</option>
+        <option value="usa">usa</option>
+      </select>
+      <p *ngIf="country.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="country.errors['required']">This field is required</small>
+      </p>
+    </div>
+    <div>
+      <label for="email" style="padding-right: 12px">Email</label>
+      <input
+        type="text"
+        name="email"
+        #email="ngModel"
+        ngModel
+        required
+        pattern="^[a-zA-Z]+@d\.com$"
+      />
+      <p *ngIf="email.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="email.errors['required']">This field is required</small>
+        <small *ngIf="email.errors['pattern']"
+          >This field must have format example&#64;d.com</small
+        >
+      </p>
+    </div>
+    <div>
+      <label style="padding-right: 12px">Sexe</label>
+      <label style="padding-right: 12px">Male</label>
+      <input
+        type="radio"
+        name="sex"
+        value="male"
+        #sex="ngModel"
+        ngModel
+        required
+      />
+      <label style="padding-inline: 12px">Female</label>
+      <input
+        type="radio"
+        name="sex"
+        value="female"
+        #sex="ngModel"
+        ngModel
+        required
+      />
+      <p *ngIf="sex.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="sex.errors['required']">This field is required</small>
+      </p>
+    </div>
+    <div>
+      <label style="padding-right: 12px">Language</label>
+      <input type="checkbox" name="accept" #accept="ngModel" ngModel required />
+      <label style="padding-inline: 12px">I accept the terms of service</label>
+      <p *ngIf="accept.errors" style="color: red; display: grid; gap: 6px">
+        <small *ngIf="accept.errors['required']">This field is required</small>
+      </p>
+    </div>
+    <button [disabled]="f1.form.status === 'INVALID'">Register</button>
+  </form>
+</section>
