@@ -48,14 +48,9 @@
         ngModel
         required
       />
-      <p
-        *ngIf="confirmation.errors"
-        style="color: red; display: grid; gap: 6px"
+      <small *ngIf="confirmation.control.value !== password.control.value"
+        >This field isnt same</small
       >
-        <small *ngIf="confirmation.errors['required']"
-          >This field is required</small
-        >
-      </p>
     </div>
     <div>
       <label for="country" style="padding-right: 12px">Country</label>
